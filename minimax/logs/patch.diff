@@ -1,0 +1,17 @@
+--- biz/todo.py (修改前)
++++ biz/todo.py (修改后)
+@@ -44,9 +44,12 @@
+ def list_items(priority=None):
+     """列出待办。
+ 
+-    TODO(SPEC-3)：规格要求支持按 priority 筛选，此参数目前尚未生效。
++    支持按 priority 筛选，返回 priority 等于指定值的待办。
+     """
+-    return load_items()
++    items = load_items()
++    if priority is not None:
++        return [item for item in items if item["priority"] == priority]
++    return items
+ 
+ 
+ def mark_done(item_id):

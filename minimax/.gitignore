@@ -1,0 +1,6 @@
+.env
+logs/*.secret
+__pycache__/
+*.pyc
+todos.json
+ctx/state.json

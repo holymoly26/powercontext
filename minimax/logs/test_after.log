@@ -1,0 +1,10 @@
+test_add_item (test_todo.TodoTest.test_add_item) ... ok
+test_filter_by_priority (test_todo.TodoTest.test_filter_by_priority) ... ok
+test_filter_returns_only_matching (test_todo.TodoTest.test_filter_returns_only_matching) ... ok
+test_list_all (test_todo.TodoTest.test_list_all) ... ok
+test_mark_done (test_todo.TodoTest.test_mark_done) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.049s
+
+OK

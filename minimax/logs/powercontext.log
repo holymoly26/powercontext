@@ -1,0 +1,22 @@
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/scopes -> HTTP 201 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/remember -> HTTP 200 state
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/remember -> HTTP 200 next_step
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:47 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/remember -> HTTP 200 fact
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:10:48 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:20 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:20 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:20 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:26 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:26 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
+2026-10-28 12:11:26 POST http://127.0.0.1:8000/v1/memory/search -> HTTP 200 
