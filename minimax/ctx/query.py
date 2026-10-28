@@ -1,4 +1,4 @@
-"""按开发任务检索上下文，输出 JSON 给 AI 助手。
+﻿"""按开发任务检索上下文，输出 JSON 给 AI 助手。
 
 用法：
     python ctx/query.py --task "为 list 命令增加按优先级筛选"
@@ -14,7 +14,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from db import connect  # noqa: E402
+from db import connect, log_sql  # noqa: E402
 from state import load_state  # noqa: E402
 
 STOP = set("的 了 和 在 为 对 与 及 或 把 被 用 到 从 让 使 中 上 下 一 个 是 有 要 需要 支持 实现 增加".split())
@@ -39,12 +39,17 @@ def score(content, tokens):
     return sum(low.count(t) for t in tokens)
 
 
+SQL_ALL = "SELECT path, symbol, kind, title, content, lineno, version FROM context_docs"
+
+
 def fetch_all():
     with connect() as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT path, symbol, kind, title, content, lineno, version FROM context_docs")
+            cur.execute(SQL_ALL)
             cols = [c[0] for c in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            rows = [dict(zip(cols, row)) for row in cur.fetchall()]
+    log_sql(SQL_ALL, rows=len(rows))
+    return rows
 
 
 def build_context(task):

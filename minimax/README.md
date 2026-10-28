@@ -12,7 +12,7 @@
 | 验证样例 | [`docs/验证样例.md`](docs/验证样例.md) |
 | 一页技术说明 | [`docs/技术说明.md`](docs/技术说明.md) |
 | 代码与测试 | `logs/todo.py.before`、`logs/patch.diff`、`logs/test_before.log`、`logs/test_after.log` |
-| 技术使用记录 | `logs/minimax_session.md`、`logs/powercontext.log` |
+| 技术使用记录 | `logs/minimax_session.md`、`logs/powercontext.log`、`logs/sql_query.log` |
 
 ---
 
@@ -43,17 +43,14 @@ minimax-ctx/
 pip install -r requirements.txt
 ```
 
-**1. 建表**（seekdb 已在 2881 运行）
+**1. 建表 + 导入工程资料**（一条命令，不需要 mysql 客户端）
 
 ```bash
-mysql -h127.0.0.1 -P2881 -uroot < schema.sql
+python ctx/importer.py --root biz --reset --init-db
 ```
 
-**2. 导入工程资料**
-
-```bash
-python ctx/importer.py --root biz --reset
-```
+`--init-db` 会直接执行 `schema.sql` 建库建表（也可用 `mysql -h127.0.0.1 -P2881 -uroot < schema.sql`）。
+所有 SQL 会记录到 `logs/sql_query.log`。
 
 **3. 查询上下文**
 

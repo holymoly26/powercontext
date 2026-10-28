@@ -1,4 +1,4 @@
-"""把工程资料切块导入 seekdb。
+﻿"""把工程资料切块导入 seekdb。
 
 用法：
     python ctx/importer.py --root biz
@@ -9,7 +9,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from db import connect  # noqa: E402
+from db import connect, init_schema, log_sql  # noqa: E402
 
 # 文件 -> 资料类型
 KIND_BY_DIR = {"docs": "spec", "tests": "test", "test": "test"}
@@ -102,6 +102,7 @@ def import_docs(root):
         with conn.cursor() as cur:
             for d in docs:
                 cur.execute(UPSERT, d)
+                log_sql(UPSERT, rows=cur.rowcount)
     return len(docs)
 
 
@@ -109,12 +110,19 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default="biz", help="资料根目录")
     ap.add_argument("--reset", action="store_true", help="先清空表")
+    ap.add_argument("--init-db", action="store_true", help="先执行 schema.sql 建库建表")
     args = ap.parse_args()
 
+    if args.init_db:
+        n_stmt = init_schema()
+        print("schema applied: %d statements" % n_stmt)
+
     if args.reset:
+        sql = "TRUNCATE TABLE context_docs"
         with connect() as conn:
             with conn.cursor() as cur:
-                cur.execute("TRUNCATE TABLE context_docs")
+                cur.execute(sql)
+                log_sql(sql, rows=cur.rowcount)
         print("table truncated")
 
     n = import_docs(args.root)
